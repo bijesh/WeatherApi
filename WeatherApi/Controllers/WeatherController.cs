@@ -12,6 +12,7 @@ using WeatherApi.Utilities;
 
 namespace WeatherApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class WeatherController : ControllerBase
@@ -37,6 +38,17 @@ namespace WeatherApi.Controllers
                 var weatherViewModel = _weatherResultViewModelBuilder.Build(weatherResponse);
                 return weatherViewModel;
 
+        }
+
+        /// <summary>
+        /// this is an endpoint to chek the health 
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpGet]
+        public ActionResult<string> Ping()
+        {
+            return Ok("Hello");
         }
     }
 }
